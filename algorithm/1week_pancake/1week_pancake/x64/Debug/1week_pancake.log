@@ -1,4 +1,3 @@
-﻿  pancake.cpp
-C:\college\2-2\2-2\algorithm\1week_pancake\1week_pancake\pancake.cpp(14,13): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
-C:\college\2-2\2-2\algorithm\1week_pancake\1week_pancake\pancake.cpp(79): warning C4715: 'pancake': 모든 제어 경로에서 값을 반환하지는 않습니다.
+﻿  nap.cpp
+C:\college\2-2\2-2\algorithm\1week_pancake\1week_pancake\nap.cpp(6,13): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
   1week_pancake.vcxproj -> C:\college\2-2\2-2\algorithm\1week_pancake\x64\Debug\1week_pancake.exe
