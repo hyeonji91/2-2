@@ -1,0 +1,5 @@
+﻿  소스2.cpp
+C:\Users\kgmong\college\2-2\algorithm\problem5_distinctSubsequences\problem5_distinctSubsequences\소스2.cpp(12,13): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
+C:\Users\kgmong\college\2-2\algorithm\problem5_distinctSubsequences\problem5_distinctSubsequences\소스2.cpp(51,27): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\kgmong\college\2-2\algorithm\problem5_distinctSubsequences\problem5_distinctSubsequences\소스2.cpp(52,28): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  problem5_distinctSubsequences.vcxproj -> C:\Users\kgmong\college\2-2\algorithm\problem5_distinctSubsequences\x64\Debug\problem5_distinctSubsequences.exe
