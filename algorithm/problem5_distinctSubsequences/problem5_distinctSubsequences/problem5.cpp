@@ -4,8 +4,8 @@
 #include<string.h>
 #include<ctype.h>
 
-#define X_MAXLEN 10001 //최대 10000자
-#define Z_MAXLEN 101 //최대 100자
+#define X_MAXLEN 10001 //max 10000
+#define Z_MAXLEN 101 //max 100
 
 int dynamic_programming(char[], char[]);
 
@@ -15,11 +15,11 @@ void main() {
 	char z[Z_MAXLEN];
 
 	scanf("%d", &num);
-	int* output = (int*)malloc(sizeof(int*) * num); //결과값
-	memset(output, 0, sizeof(int) * num); //결과값 초기화
+	int* output = (int*)malloc(sizeof(int*) * num); //result
+	memset(output, 0, sizeof(int) * num); //init result
 
-	int xIsLower = true; //x가 lowercase로 이루어져 있으면 true, 아니면 false
-	int zIsLower = true; //z가 lowercase로 이루어져 있으면 true, 아니면 false
+	int xIsLower = true; //true if x consists of lowercase, false otherwise
+	int zIsLower = true; //true if z consists of lowercase, false otherwise
 	for (int i = 0; i < num; i++) {
 		do {
 			printf("[#%d] Enter lowercase alpahbetic characters: \n", i);
@@ -28,19 +28,19 @@ void main() {
 			xIsLower = true;
 			zIsLower = true;
 			for (int stringIndex = 0; stringIndex < strlen(x); stringIndex++) {
-				if (isupper(x[stringIndex]))//x에 uppercase가 있으면 xIsLower에 false할당
+				if (isupper(x[stringIndex]))//If x has an uppercase, assign false to xIsLower
 					xIsLower = false;
 			}
 			for (int stringIndex = 0; stringIndex < strlen(z); stringIndex++) {
-				if (isupper(z[stringIndex]))//z에 uppercase가 있으면 zIsLower에 false할당
+				if (isupper(z[stringIndex]))//If z has an uppercase, assign false to zIsLower
 					zIsLower = false;
 			}
-		} while (!(xIsLower && zIsLower));//z, x에 upppercase가 있다면 다시 입력받기
+		} while (!(xIsLower && zIsLower));//If there is an uppercase in z and x, get input again
 		output[i] = dynamic_programming(x, z);
 	}
 
 
-	//결과
+	//result print
 	for (int i = 0; i < num; i++) {
 		printf("%d\n", output[i]);
 	}
@@ -48,17 +48,17 @@ void main() {
 }
 
 int dynamic_programming(char x[], char z[]) {
-	int width = strlen(x) + 1; //x 글자수 만큼 table 열 만들기 + 첫번째에 빈 열 추가
-	int height = strlen(z) + 1; //z 글자수 만큼 table 행 만들기 + 첫번째에 빈 행 추가
+	int width = strlen(x) + 1; //Create table columns as many as x characters + add empty column at first
+	int height = strlen(z) + 1; //Create table columns as many as z characters + add empty column at first
 
-	int** table = (int**)malloc(sizeof(int*) * height);//table 행 만들기
+	int** table = (int**)malloc(sizeof(int*) * height);//Create rows in table
 	for (int index = 0; index < strlen(z) + 1; index++) {
-		table[index] = (int*)malloc(sizeof(int) * width);//table 열 만들기
+		table[index] = (int*)malloc(sizeof(int) * width);//Create columns in table
 	}
 
 	int i = 0;
 	int j = 0;
-	//첫번째 행 1로 초기화, 첫번째 열 0으로 초기화
+	//First row initialized to 1, first column initialized to 0
 	for (j = 0; j < width; j++) {
 		table[0][j] = 1;
 	}
@@ -68,17 +68,17 @@ int dynamic_programming(char x[], char z[]) {
 	
 	for (i = 1; i < height; i++) {
 		for (j = 1; j < width; j++) {
-			if (x[j - 1] == z[i - 1]) {//같으면 표 [왼쪽+왼쪽 대각선 위] 값 가져오기
+			if (x[j - 1] == z[i - 1]) {//If they are equal, get the[Left + Left Diagonal Above] value from the table.
 				table[i][j] = table[i][j - 1] + table[i - 1][j - 1];
 			}
-			else//틀리면 표 왼쪽에서 값 가져오기
+			else//If different, get value from left side of table
 				table[i][j] = table[i][j - 1];
 		}
 	}
 
 	int result = table[height - 1][width - 1];
 
-	//동적할당 해제
+	//free
 	for (int index = 0; index < height; index++) {
 		free(table[index]);
 	}
