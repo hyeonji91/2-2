@@ -1,3 +1,3 @@
-﻿  problem4 new version.cpp
-C:\college\2-2\2-2\algorithm\practice_lab1\practice_lab1\problem4 new version.cpp(27,13): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
-  practice_lab1.vcxproj -> C:\college\2-2\2-2\algorithm\practice_lab1\x64\Debug\practice_lab1.exe
+﻿  problem7 jewelBox.cpp
+C:\Users\kgmong\college\2-2\algorithm\practice_lab1\practice_lab1\problem7 jewelBox.cpp(33,13): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
+  practice_lab1.vcxproj -> C:\Users\kgmong\college\2-2\algorithm\practice_lab1\x64\Debug\practice_lab1.exe
