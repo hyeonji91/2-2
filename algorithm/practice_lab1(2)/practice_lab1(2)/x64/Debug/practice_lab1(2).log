@@ -1,0 +1,3 @@
+﻿  problem7.cpp
+C:\college\2-2\2-2\algorithm\practice_lab1(2)\practice_lab1(2)\problem7.cpp(35,13): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
+  practice_lab1(2).vcxproj -> C:\college\2-2\2-2\algorithm\practice_lab1(2)\x64\Debug\practice_lab1(2).exe

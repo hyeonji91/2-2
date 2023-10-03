@@ -15,7 +15,7 @@ void result(int c1, int n1, int c2, int n2) {
 	{
 		minNum = n2;
 		maxNum = n1;
-	}
+	} 
 	else
 	{
 		minNum = n1;

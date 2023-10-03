@@ -37,6 +37,8 @@ void main() {
 
 	qsort(elephant, elephantCnt, sizeof(Elephant), ascending);
 
+
+
 	for (int i = 0; i < elephantCnt; i++) {
 		dp[i] = 1;
 		for (int j = 0; j < i; j++) {
