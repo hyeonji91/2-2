@@ -1,0 +1,5 @@
+﻿  problem16_aMarketingStrategy.cpp
+C:\Users\HyeonjiKim\Documents\GitHub\2-2\algorithm\practice_lab2\practice_lab2\problem16_aMarketingStrategy.cpp(9,2): warning C4091: 'typedef ': 변수를 선언하지 않으면 'Dot' 왼쪽은 무시됩니다.
+C:\Users\HyeonjiKim\Documents\GitHub\2-2\algorithm\practice_lab2\practice_lab2\problem16_aMarketingStrategy.cpp(17,13): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
+C:\Users\HyeonjiKim\Documents\GitHub\2-2\algorithm\practice_lab2\practice_lab2\problem16_aMarketingStrategy.cpp(105,13): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  practice_lab2.vcxproj -> C:\Users\HyeonjiKim\Documents\GitHub\2-2\algorithm\practice_lab2\x64\Debug\practice_lab2.exe

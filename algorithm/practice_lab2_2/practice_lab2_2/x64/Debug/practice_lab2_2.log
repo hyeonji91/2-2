@@ -1,0 +1,8 @@
+﻿  problem14_cleanCampus.cpp
+C:\Users\HyeonjiKim\Documents\GitHub\2-2\algorithm\practice_lab2_2\practice_lab2_2\problem14_cleanCampus.cpp(10,2): warning C4091: 'typedef ': 변수를 선언하지 않으면 'Dot' 왼쪽은 무시됩니다.
+C:\Users\HyeonjiKim\Documents\GitHub\2-2\algorithm\practice_lab2_2\practice_lab2_2\problem14_cleanCampus.cpp(31,13): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
+C:\Users\HyeonjiKim\Documents\GitHub\2-2\algorithm\practice_lab2_2\practice_lab2_2\problem14_cleanCampus.cpp(99,20): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\HyeonjiKim\Documents\GitHub\2-2\algorithm\practice_lab2_2\practice_lab2_2\problem14_cleanCampus.cpp(136,6): warning C4101: 'startDot' :참조되지 않은 지역 변수입니다.
+C:\Users\HyeonjiKim\Documents\GitHub\2-2\algorithm\practice_lab2_2\practice_lab2_2\problem14_cleanCampus.cpp(166,13): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\HyeonjiKim\Documents\GitHub\2-2\algorithm\practice_lab2_2\practice_lab2_2\problem14_cleanCampus.cpp(201): warning C4715: 'pop': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  practice_lab2_2.vcxproj -> C:\Users\HyeonjiKim\Documents\GitHub\2-2\algorithm\practice_lab2_2\x64\Debug\practice_lab2_2.exe

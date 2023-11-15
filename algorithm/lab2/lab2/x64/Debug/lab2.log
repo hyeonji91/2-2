@@ -1,0 +1,5 @@
+﻿  lab2.cpp
+C:\Users\HyeonjiKim\Documents\GitHub\2-2\algorithm\lab2\lab2\lab2.cpp(9,2): warning C4091: 'typedef ': 변수를 선언하지 않으면 'Dot' 왼쪽은 무시됩니다.
+C:\Users\HyeonjiKim\Documents\GitHub\2-2\algorithm\lab2\lab2\lab2.cpp(18,13): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
+C:\Users\HyeonjiKim\Documents\GitHub\2-2\algorithm\lab2\lab2\lab2.cpp(106,13): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  lab2.vcxproj -> C:\Users\HyeonjiKim\Documents\GitHub\2-2\algorithm\lab2\x64\Debug\lab2.exe
