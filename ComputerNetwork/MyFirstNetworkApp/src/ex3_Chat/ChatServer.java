@@ -38,6 +38,8 @@ public class ChatServer {
                     System.out.println(clientText);
                     serverText = sc.nextLine();
                     outToClient.write("Server> " + serverText + "\n");
+                    serverText = sc.nextLine();
+                    outToClient.write("Server> " + serverText + "\n");
                     outToClient.flush();
                 }
                 num++;

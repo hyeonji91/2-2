@@ -30,6 +30,8 @@ public class CherClient {
                 }
                 serverText = inFromServer.readLine();
                 System.out.println(serverText);
+                serverText = inFromServer.readLine();
+                System.out.println(serverText);
 
             }
         }catch(IOException e){

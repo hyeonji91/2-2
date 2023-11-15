@@ -15,7 +15,7 @@ public class CalcClient {
     public static void main(String[] arg){
         BufferedReader br = null;
         String fileName = "serverInfo.dat";
-        Scanner in = null;
+        BufferedReader in = null;
         PrintWriter out = null;
         Socket socket = null;
         Scanner sc = null;
@@ -41,7 +41,7 @@ public class CalcClient {
         try{
             socket = new Socket(IP, portNum);
 
-            in = new Scanner(socket.getInputStream());
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
             sc = new Scanner(System.in);
 
@@ -59,16 +59,15 @@ public class CalcClient {
                     break;
 
                 //from server
-                String success = in.nextLine(); //성공:s 실패:e
+                String success = in.readLine(); //성공:s 실패:e
+                String msg = in.readLine();
                 if(success.equals("s")){//Success
-                    System.out.print("[SUCCESS] ");
-                    String msg = in.nextLine();
-                    System.out.println("msg: "+msg);
+                    System.out.println("[SUCCESS] "+msg);
+                    //String msg = in.nextLine();
                 }
                 else{//Error
                     System.out.print("[ERROR]");
-                    String msg = in.nextLine();
-                    System.out.println("msg: "+msg);
+                    //String msg = in.nextLine();
                     //Integer errorCode = Integer.parseInt(in.nextLine());
                     printErrorMsg(Integer.parseInt(msg));
                 }
@@ -97,21 +96,21 @@ public class CalcClient {
          */
         switch(errorCode){
             case 400:
-                System.out.println("Format error");
+                System.out.println("[400] Format error");
                 System.out.println("Please enter it in this format : [operator] [first number] [second number]");
                 break;
             case 401:
-                System.out.println("Not number");
+                System.out.println("[401] Not number");
                 System.out.println("The second and third values must be number");
                 break;
             case 402:
-                System.out.println("Divided by ZERO");
-                System.out.println("Cannot be divided by ZERO");
-                break;
-            case 403:
-                System.out.println("Not operator");
+                System.out.println("[402] Not operator");
                 System.out.println("The first value is must be operator");
                 System.out.println("You can only use this operators : add, sub, mul, div (not case-sensitive)");
+                break;
+            case 403:
+                System.out.println("[403] Divided by ZERO");
+                System.out.println("Cannot be divided by ZERO");
                 break;
             default:
                 System.out.println("error");

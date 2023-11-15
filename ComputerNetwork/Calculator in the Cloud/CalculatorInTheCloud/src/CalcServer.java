@@ -10,19 +10,19 @@ import java.util.concurrent.Executors;
 #1 ERROR
 [400] format error
 [401] not number
-[402] divided by ZERO
-[403] not operator
+[402] not operator
+[403] divided by ZERO
  */
 
 public class CalcServer {
     public static class ReturnValue{
         public String success = "s"; //s:success, e:error
         public Integer errorCode;
-        public Double result;
+        public double result;
     }
     public static ReturnValue calc(String exp){//계산하기
         ReturnValue returnValue = new ReturnValue();
-        double result = 0;
+        double result = 0.0;
         StringTokenizer st = new StringTokenizer(exp, " ");//나누기
         //3개가 아니면 포맷에러
         if(st.countTokens() != 3){
@@ -32,13 +32,14 @@ public class CalcServer {
         }
 
         String opcode = st.nextToken().toLowerCase();
-        double op1 = 0, op2 = 0;
+        double op1 = 0.0, op2 = 0.0;
         try{
             op1 = Double.parseDouble(st.nextToken());
             op2 = Double.parseDouble(st.nextToken());
         }catch(NumberFormatException e){//double이 아니면 not number 에러
             returnValue.success = "e";
             returnValue.errorCode = 401;
+            return returnValue;
         }
         //계산하기
         switch(opcode){
@@ -57,7 +58,7 @@ public class CalcServer {
             case "div":
                 if(op2 == 0){//divided by zero 에러
                     returnValue.success = "e";
-                    returnValue.errorCode = 402;
+                    returnValue.errorCode = 403;
                 }
                 else{
                     result = op1 /op2;
@@ -66,7 +67,7 @@ public class CalcServer {
                 break;
             default://not operator 에러
                 returnValue.success = "e";
-                returnValue.errorCode = 403;
+                returnValue.errorCode = 402;
         }
         //System.out.println(returnValue.success + returnValue.errorCode + returnValue.result);
         return returnValue;
@@ -111,19 +112,20 @@ public class CalcServer {
                         break;
                     }
                     //계산하기
-                    System.out.println(ClientText);
+                    //System.out.println(ClientText);
                     ReturnValue returnValue = calc(ClientText);
+
                     //server to client
-                    out.println(returnValue.success +"\n");//성공인지 에러인지 반환
+                    out.println(returnValue.success);//성공인지 에러인지 반환
                     if(returnValue.success.equals("s")) {//성공이면 계산 값 반환
-                        out.println(returnValue.result.toString());
+                        out.println(returnValue.result);
                         out.flush();
-                        System.out.println("s: " +returnValue.result);
+                        System.out.println("[SUCCESS] " +ClientText +" : "+ returnValue.result);
                     }
                     else {//실패면 에러코드 반환
-                        out.println(returnValue.errorCode.toString());
+                        out.println(returnValue.errorCode);
                         out.flush();
-                        System.out.println("e: " + returnValue.errorCode);
+                        System.out.println("[Error] " + returnValue.errorCode+" : "+ClientText);
                     }
                 }
             } catch(IOException e){
