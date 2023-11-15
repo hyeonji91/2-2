@@ -15,7 +15,7 @@ import java.util.concurrent.Executors;
  */
 
 public class CalcServer {
-    public static class ReturnValue{
+    public static class ReturnValue{//연산한 값을 담을 클래스
         public String success = "s"; //s:success, e:error
         public Integer errorCode;
         public double result;
@@ -23,14 +23,14 @@ public class CalcServer {
     public static ReturnValue calc(String exp){//계산하기
         ReturnValue returnValue = new ReturnValue();
         double result = 0.0;
-        StringTokenizer st = new StringTokenizer(exp, " ");//나누기
-        //3개가 아니면 포맷에러
+        StringTokenizer st = new StringTokenizer(exp, " ");//나누는 기준 설정
+        //요소가 3개가 아니면 포맷 에러
         if(st.countTokens() != 3){
             returnValue.success = "e";
             returnValue.errorCode = 400;
             return returnValue;
         }
-
+        //입력값 넣기
         String opcode = st.nextToken().toLowerCase();
         double op1 = 0.0, op2 = 0.0;
         try{
@@ -98,7 +98,6 @@ public class CalcServer {
             Scanner in = null;
             PrintWriter out = null;
             String ClientText;
-            String ServerText;
 
             try{
                 in = new Scanner(socket.getInputStream());
@@ -107,7 +106,7 @@ public class CalcServer {
                 while(true) {
                     //from client
                     ClientText = in.nextLine();
-                    if(ClientText.equalsIgnoreCase("q")){
+                    if(ClientText.equalsIgnoreCase("q")){//만약 client에서 q입력했다면 스레드 종료
                         System.out.println("클라이언트에서 연결을 종료했습니다");
                         break;
                     }
@@ -141,12 +140,4 @@ public class CalcServer {
         }
     }
 
-    public static void closeConnect(Socket socket){
-        try {
-            if(socket != null)
-                socket.close();
-        } catch(IOException e){
-            System.out.println("Closed : "+socket);
-        }
-    }
 }

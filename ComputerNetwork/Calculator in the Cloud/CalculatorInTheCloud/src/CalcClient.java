@@ -13,14 +13,13 @@ if you want exit program, enter q (not case-sensitive)
 
 public class CalcClient {
     public static void main(String[] arg){
-        BufferedReader br = null;
-        String fileName = "serverInfo.dat";
+        BufferedReader br = null;//파일 읽기
+        String fileName = "serverInfo.dat";//server ip address & port number
         BufferedReader in = null;
         PrintWriter out = null;
         Socket socket = null;
-        Scanner sc = null;
-        String clientText;
-        String serverText;
+        Scanner sc = null;//키보드에서 읽어오기
+        String clientText;//클라이언트에서 받아온 text
 
         String IP = "";
         int portNum = 0;
@@ -32,7 +31,7 @@ public class CalcClient {
             portNum = Integer.parseInt(br.readLine());
             System.out.println(IP + " " + portNum);
             br.close();
-        }catch (IOException e) {
+        }catch (IOException e) {//파일 존재하지 않으면 default값으로 설정
             System.out.println("Can not open file " +fileName + ". Set IP address and port number default");
             IP = "127.0.0.1";
             portNum = 9999;
@@ -53,23 +52,20 @@ public class CalcClient {
             while(true) {
                 //client to server
                 System.out.print("계산식 >> ");
-                clientText = sc.nextLine();
-                out.println(clientText);
-                if(clientText.equalsIgnoreCase("q"))
+                clientText = sc.nextLine();//키보드에서 읽어서
+                out.println(clientText);//서버로 보내기
+                if(clientText.equalsIgnoreCase("q"))//q를 입력했다면 종료
                     break;
 
                 //from server
                 String success = in.readLine(); //성공:s 실패:e
-                String msg = in.readLine();
+                String msg = in.readLine(); //성공이라면 계산결과, 실패라면 에러코드
                 if(success.equals("s")){//Success
                     System.out.println("[SUCCESS] "+msg);
-                    //String msg = in.nextLine();
                 }
                 else{//Error
                     System.out.print("[ERROR]");
-                    //String msg = in.nextLine();
-                    //Integer errorCode = Integer.parseInt(in.nextLine());
-                    printErrorMsg(Integer.parseInt(msg));
+                    printErrorMsg(Integer.parseInt(msg));//에러코드 해석
                 }
             }
         } catch(IOException e){
