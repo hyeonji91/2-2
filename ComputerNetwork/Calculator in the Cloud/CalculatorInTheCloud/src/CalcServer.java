@@ -73,9 +73,10 @@ public class CalcServer {
         return returnValue;
     }
 
+    private static ServerSocket listener =null;
     public static void main (String[] arg) throws IOException{
 
-        ServerSocket listener = new ServerSocket(9999);
+        listener = new ServerSocket(9999);
         System.out.println("연결을 기다리고 있습니다......");
         ExecutorService pool = Executors.newFixedThreadPool(20);
         while(true) {
@@ -86,6 +87,9 @@ public class CalcServer {
 
     private static class CalcThread implements Runnable{
         private Socket socket;
+        private Scanner in = null;
+        private PrintWriter out = null;
+        private String fromClientText;
 
         CalcThread(Socket socket){
             this.socket = socket;
@@ -95,36 +99,32 @@ public class CalcServer {
         public void run(){
             System.out.println("Connected: "+ socket);
 
-            Scanner in = null;
-            PrintWriter out = null;
-            String ClientText;
-
             try{
                 in = new Scanner(socket.getInputStream());
                 out = new PrintWriter(socket.getOutputStream());
 
                 while(true) {
                     //from client
-                    ClientText = in.nextLine();
-                    if(ClientText.equalsIgnoreCase("q")){//만약 client에서 q입력했다면 스레드 종료
+                    fromClientText = in.nextLine();
+                    if(fromClientText.equalsIgnoreCase("q")){//만약 client에서 q입력했다면 스레드 종료
                         System.out.println("클라이언트에서 연결을 종료했습니다");
                         break;
                     }
                     //계산하기
                     //System.out.println(ClientText);
-                    ReturnValue returnValue = calc(ClientText);
+                    ReturnValue returnValue = calc(fromClientText);
 
                     //server to client
                     out.println(returnValue.success);//성공인지 에러인지 반환
                     if(returnValue.success.equals("s")) {//성공이면 계산 값 반환
                         out.println(returnValue.result);
                         out.flush();
-                        System.out.println("[SUCCESS] " +ClientText +" : "+ returnValue.result);
+                        System.out.println("[SUCCESS] " +fromClientText +" : "+ returnValue.result);
                     }
                     else {//실패면 에러코드 반환
                         out.println(returnValue.errorCode);
                         out.flush();
-                        System.out.println("[Error] " + returnValue.errorCode+" : "+ClientText);
+                        System.out.println("[Error] " + returnValue.errorCode+" : "+fromClientText);
                     }
                 }
             } catch(IOException e){

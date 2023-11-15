@@ -11,13 +11,14 @@ import java.util.Scanner;
 if you want exit program, enter q (not case-sensitive)
  */
 
-public class CalcClient {
+public class CalcClient extends CalcServer {
+    private static BufferedReader in = null;
+    private static PrintWriter out = null;
+    private static Socket socket = null;
     public static void main(String[] arg){
         BufferedReader br = null;//파일 읽기
         String fileName = "serverInfo.dat";//server ip address & port number
-        BufferedReader in = null;
-        PrintWriter out = null;
-        Socket socket = null;
+
         Scanner sc = null;//키보드에서 읽어오기
         String clientText;//클라이언트에서 받아온 text
 
