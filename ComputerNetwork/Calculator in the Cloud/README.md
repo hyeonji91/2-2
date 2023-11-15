@@ -1,4 +1,6 @@
 # [Computer Network] Calculator in the Cloud
+Create network application that calculator program using Java socket API.
+
 ## Requirements
 
 - 클라이언트가 계산을 요청하면 서버가 계산해서 클라이언트로 결과 보내줌
