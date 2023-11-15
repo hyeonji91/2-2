@@ -37,6 +37,6 @@ Create network application that calculator program using Java socket API.
 if you want exit program, enter `q` (not case-sensitive)
 
 
-# 구조도
+## 구조도
 ![image](https://github.com/hyeonji91/2-2/assets/112065014/759f2c51-7a3a-4f5e-9578-a912ba858c87)
 
